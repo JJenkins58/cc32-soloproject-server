@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const cors = require("cors");
-const knex = require('./knex');
 
 const PORT = process.env.PORT || 8080;
 

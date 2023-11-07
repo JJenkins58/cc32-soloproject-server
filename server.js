@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const cors = require("cors");
 
+const accountController = require("./src/account/account-controller");
+
 const PORT = process.env.PORT || 8080;
 
 app.use(express.json());

@@ -13,3 +13,5 @@ app.get("/hello", (req, res) => {
     const helloWorld = "Hello World from server";
     res.status(200).send(JSON.stringify(helloWorld));
 });
+
+app.post("/register", accountController)

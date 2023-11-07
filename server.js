@@ -16,4 +16,6 @@ app.get("/hello", (req, res) => {
     res.status(200).send(JSON.stringify(helloWorld));
 });
 
-app.post("/register", accountController)
+app.post("/register", accountController.registerAccount);
+
+app.post("/login", accountController.login);

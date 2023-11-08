@@ -14,7 +14,6 @@ module.exports = {
             const inputPassword = req.body.password;
             const accountData = await accountModel.getDataByUsername(inputUsername);
 
-            console.log("accdata",accountData);
             if(!accountData) {
                 throw new Error();
             }
@@ -72,7 +71,6 @@ module.exports = {
                 firstName: firstName,
                 lastName: lastName,
             };
-            console.log(newAccountData)
 
             await accountModel.createNewAccount(newAccountData);
             res.status(201).send("Account Registered");

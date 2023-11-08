@@ -3,6 +3,7 @@ const app = express();
 const cors = require("cors");
 
 const accountController = require("./src/account/account-controller");
+const closetController = require('./src/closet/closet-controller');
 
 const PORT = process.env.PORT || 8080;
 
@@ -19,3 +20,8 @@ app.get("/hello", (req, res) => {
 app.post("/register", accountController.createNewAccount);
 
 app.post("/login", accountController.login);
+
+app.get("/items", async (req, res) => {
+    const items = await closetController.index();
+    res.status(200).send(JSON.stringify(items));
+})

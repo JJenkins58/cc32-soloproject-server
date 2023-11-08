@@ -10,7 +10,8 @@ app.get('/', function(req, res, next) {
 module.exports = {
     async login(req, res) {
         try {
-            const { username: inputUsername, password: inputPassword } = req.body;
+            const inputUsername = req.body.username;
+            const inputPassword = req.body.password;
             const accountData = await accountModel.getDataByUsername(inputUsername);
 
             console.log("accdata",accountData);
@@ -41,7 +42,11 @@ module.exports = {
 
     async createNewAccount(req, res) {
         try {
-            const { username, password, email, firstName, lastName } = req.body;
+            const username = req.body.username;
+            const password = req.body.password;
+            const email = req.body.email;
+            const firstName = req.body.firstName;
+            const lastName = req.body.lastName;
             const accountDataByUsername = await accountModel.getDataByUsername(username);
             const accountDataByEmail = await accountModel.getDataByEmail(email);
 
@@ -62,12 +67,14 @@ module.exports = {
             const newAccountData = {
                 username: username,
                 hashSaltedPassword: hashSaltedPassword,
+                email: email,
                 salt: salt,
                 firstName: firstName,
                 lastName: lastName,
             };
+            console.log(newAccountData)
 
-            await accountModel.createNewAccountAccount(newAccountData);
+            await accountModel.createNewAccount(newAccountData);
             res.status(201).send("Account Registered");
         } catch (error) {
             res.status(409).send(`Failed to create account: ${error.message}`);

@@ -12,7 +12,7 @@ module.exports = {
     createNewAccount(newAccountData) {
         return knex('account').insert({
             username: newAccountData.username,
-            hash_salted_password: newAccountData.hash_salted_password,
+            hash_salted_password: newAccountData.hashSaltedPassword,
             salt: newAccountData.salt,
             email: newAccountData.email,
             first_name: newAccountData.firstName,

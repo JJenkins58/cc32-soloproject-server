@@ -43,7 +43,7 @@ module.exports = {
         }
     },
 
-    async registerAccount(req, res) {
+    async createNewAccount(req, res) {
         try {
             const { username, password, email, firstName, lastName } = req.body;
             const accountDataByUsername = await accountModel.getDataByUsername(username);
@@ -71,7 +71,7 @@ module.exports = {
                 lastName: lastName,
             };
 
-            await accountModel.registerAccount(newAccountData);
+            await accountModel.createNewAccountAccount(newAccountData);
             res.status(201).send("Account Registered");
         } catch (error) {
             res.status(409).send(`Failed to create account: ${error.message}`);

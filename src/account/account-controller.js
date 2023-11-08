@@ -18,6 +18,7 @@ module.exports = {
             const { username: inputUsername, password: inputPassword } = req.body;
             const accountData = await accountModel.getDataByUsername(inputUsername);
 
+            console.log("accdata",accountData);
             if(!accountData) {
                 throw new Error();
             }
@@ -29,7 +30,7 @@ module.exports = {
             if(hashSaltedInputPassword !== accountData.hash_salted_password) {
                 throw new Error();
             }
-            console.log("sentaccountdata",sentAccountData)
+            
             const sentAccountData = {
                 accountID: accountData.id,
                 username: accountData.username,

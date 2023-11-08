@@ -1,16 +1,11 @@
 const accountModel = require("./account-model");
 const crypto = require("crypto");
-const session = require("express-session");
 const express = require("express");
 const app = express();
 
 app.get('/', function(req, res, next) {
     res.send("Hello World from account controller")
 })
-
-function generateSessionToken() {
-    return crypto.randomBytes(16).toString("hex");
-}
 
 module.exports = {
     async login(req, res) {

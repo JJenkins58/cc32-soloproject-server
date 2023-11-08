@@ -9,14 +9,14 @@ module.exports = {
         return knex('account').where({ email: email }).first()
     },
 
-    createNewAccount(account) {
+    createNewAccount(newAccountData) {
         return knex('account').insert({
-            username: account.username,
-            hash_salted_password: account.hash_salted_password,
-            salt: account.salt,
-            email: account.email,
-            first_name: account.firstName,
-            last_name: account.lastName,
+            username: newAccountData.username,
+            hash_salted_password: newAccountData.hash_salted_password,
+            salt: newAccountData.salt,
+            email: newAccountData.email,
+            first_name: newAccountData.firstName,
+            last_name: newAccountData.lastName,
         });
     }
 }

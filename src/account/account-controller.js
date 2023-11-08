@@ -31,7 +31,7 @@ module.exports = {
             }
 
             const sentAccountData = {
-                accountId: accountData.id,
+                accountID: accountData.id,
                 username: accountData.username,
             }
 

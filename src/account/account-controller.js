@@ -17,6 +17,7 @@ module.exports = {
         try {
             const { username: inputUsername, password: inputPassword } = req.body;
             const accountData = await accountModel.getDataByUsername(inputUsername);
+
             if(!accountData) {
                 throw new Error();
             }
@@ -24,6 +25,7 @@ module.exports = {
             const saltedInputPassword = accountData.salt + inputPassword;
             const hash = crypto.createHash("sha256");
             const hashSaltedInputPassword = hash.update(saltedInputPassword).digest("hex");
+
             if(hashSaltedInputPassword !== accountData.hash_salted_password) {
                 throw new Error();
             }
@@ -69,7 +71,7 @@ module.exports = {
                 lastName: lastName,
             };
 
-            await accountModel.createNewAccount(newAccountData);
+            await accountModel.registerAccount(newAccountData);
             res.status(201).send("Account Registered");
         } catch (error) {
             res.status(409).send(`Failed to create account: ${error.message}`);

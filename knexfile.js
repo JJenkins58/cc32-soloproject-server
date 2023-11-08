@@ -9,10 +9,6 @@ const connection = process.env.DB_URL ||
   password: process.env.DB_PASSWORD
 };
 
-// ?
-
-// : process.env.DB_URL;
-
 /**
  * @type { Object.<string, import("knex").Knex.Config> }
  */

@@ -15,9 +15,12 @@ module.exports = {
         .first();
     },
 
-    create(item) {
-        return knex("closet")
-        .insert([item]);
+    createNewItem(newItemData) {
+        return knex("closet").insert({
+            itemName: newItemData.itemName,
+            category: newItemData.category,
+            item_picture: newItemData.item_picture,
+        });
     },
 
     update(id, item) {

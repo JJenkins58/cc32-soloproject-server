@@ -24,4 +24,7 @@ app.post("/login", accountController.login);
 app.get("/items", async (req, res) => {
     const items = await closetController.index();
     res.status(200).send(JSON.stringify(items));
-})
+});
+
+app.post("/additems", closetController.createNewItem);
+

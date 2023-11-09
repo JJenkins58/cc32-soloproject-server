@@ -23,7 +23,7 @@ module.exports = {
         });
     },
 
-    update(id, item) {
-        return knex("")
-    }
+    deleteItem(numId) {
+        return knex("closet").where('id', '=', numId).del();
+    },
 }

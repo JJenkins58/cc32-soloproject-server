@@ -4,6 +4,7 @@ const cors = require("cors");
 
 const accountController = require("./src/account/account-controller");
 const closetController = require('./src/closet/closet-controller');
+const knex = require('knex');
 
 const PORT = process.env.PORT || 8080;
 
@@ -28,3 +29,4 @@ app.get("/items", async (req, res) => {
 
 app.post("/additems", closetController.createNewItem);
 
+app.delete("/items/:id", closetController.deleteItem);

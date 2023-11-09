@@ -25,4 +25,15 @@ module.exports = {
             res.status(409).send(`Failed to add item: ${error.message}`);
         }
     },
+    
+    async deleteItem(req, res) {
+        try {
+            const id = req.params.id;
+            const numId = Number(id);
+            await closetModel.deleteItem(numId);
+            res.status(201).send("Item Deleted");
+        } catch (error) {
+            res.status(409).send(`Failed to delete item: ${error.message}`);
+        }
+    }
 }

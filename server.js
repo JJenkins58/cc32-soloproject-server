@@ -30,3 +30,5 @@ app.get("/items", async (req, res) => {
 app.post("/additems", closetController.createNewItem);
 
 app.delete("/items/:id", closetController.deleteItem);
+
+app.put("/items/:id", closetController.updateItem);

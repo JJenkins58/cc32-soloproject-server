@@ -11,12 +11,14 @@ module.exports = {
         return knex
         .select("*")
         .from("closet")
-        .where({id:id})
-        .first();
+        .where({
+            userId: id.userId,
+        });
     },
 
     createNewItem(newItemData) {
         return knex("closet").insert({
+            userId: newItemData.userId,
             itemName: newItemData.itemName,
             category: newItemData.category,
             item_picture: newItemData.item_picture,
@@ -26,4 +28,14 @@ module.exports = {
     deleteItem(numId) {
         return knex("closet").where('id', '=', numId).del();
     },
+
+    updateItem(itemData) {
+        return knex("closet").where({
+            id: itemData.id,
+        })
+        .update({
+            itemName: itemData.itemName,
+            category: itemData.category,
+        })
+    }
 }
